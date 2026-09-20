@@ -69,3 +69,31 @@ Training data size: 250.0
 Compute requirements: 2800.0
 Cost: 20.0
 Ethical certification: 1
+
+Name: ИИ агент
+Generation types: фото
+Quality: 8.0
+Control level: 123
+Training data size: 34.0
+Compute requirements: 123.0
+Cost: 100.0
+Ethical certification: 0
+
+Name: 123
+Generation types: 23
+Quality: 45.0
+Control level: 23
+Training data size: 412.0
+Compute requirements: 341234.0
+Cost: 123.0
+Ethical certification: 1
+
+Name: иишка
+Generation types: text
+Quality: 5.0
+Control level: high
+Training data size: 100.0
+Compute requirements: 1000.0
+Cost: 0.0
+Ethical certification: 0
+

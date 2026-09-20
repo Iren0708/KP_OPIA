@@ -46,25 +46,25 @@ int main(void) {
     system("chcp 1251");
     setlocale(LC_CTYPE, "Rus");
 
-    printf("___________________________________________\n");
-    printf("   Файловая БД 'Generative AI платформы'  \n");
-    printf("   Курсовой проект по дисциплине ОПИА     \n");
-    printf("__________________________________________\n\n");
+    printf("******************************************\n");
+    printf("*  Файловая БД 'Generative AI платформы'  *\n");
+    printf("*  Курсовой проект по дисциплине ОПИА     *\n");
+    printf("******************************************\n\n");
 
     load_existing_platforms(platforms, &size);
     printf("Загружено записей: %d\n", size);
 
     while (1) {
-        printf("\n---------------- Menu: ----------------\n");
-        printf("1. Delete list\n");
-        printf("2. Add platform\n");
-        printf("3. Print platforms\n");
-        printf("4. Search platform\n");
-        printf("5. Sort platforms\n");
-        printf("6. Edit platform\n");
-        printf("7. Delete platform\n");
-        printf("8. Exit\n");
-        printf("Your option: ");
+        printf("\n---------------- Меню: ----------------\n");
+        printf("1. Очистить список\n");
+        printf("2. Добавить платформу\n");
+        printf("3. Показать платформы\n");
+        printf("4. Найти платформу\n");
+        printf("5. Сортировать платформы\n");
+        printf("6. Изменить платформу\n");
+        printf("7. Удалить платформу\n");
+        printf("8. Выход\n");
+        printf("Ваш выбор: ");
         scanf("%d", &option);
         getchar();
 
@@ -72,7 +72,7 @@ int main(void) {
         case 1:
             size = 0;
             save_platforms_to_file(platforms, size);
-            printf("\nList deleted.\n");
+            printf("\nСписок очищен.\n");
             break;
         case 2: add_platform(platforms, &size);     break;
         case 3: print_platforms(platforms, size);   break;
@@ -81,10 +81,10 @@ int main(void) {
         case 6: edit_platform(platforms, size);     break;
         case 7: delete_platform(platforms, &size);  break;
         case 8:
-            printf("Exit the program...\n");
+            printf("Выход из программы...\n");
             return SUCCESS;
         default:
-            printf("Wrong. Try again.\n");
+            printf("Неверный выбор. Попробуйте ещё раз.\n");
         }
     }
     return SUCCESS;
@@ -161,33 +161,98 @@ void save_platforms_to_file(generative_ai_t* platforms, int size) {
     fclose(fpw);
 }
 
-/* Заглушки — реализуются далее */
-void add_platform(generative_ai_t* platforms, int* size) {
-    (void)platforms;
-    (void)size;
-}
-
+/*
+ * Выводит список платформ на экран.
+ * platforms - массив записей
+ * size - количество записей
+ */
 void print_platforms(generative_ai_t* platforms, int size) {
-    (void)platforms;
-    (void)size;
+    int i = 0;
+
+    if (size == 0) {
+        printf("\nСписок пуст.\n");
+        return;
+    }
+
+    printf("\n=== Список платформ (%d) ===\n", size);
+
+    for (i = 0; i < size; i++) {
+        printf("\n[%d] %s\n", i + 1, platforms[i].name);
+        printf("    Типы генерации: %s\n", platforms[i].generation_types);
+        printf("    Качество: %.1f\n", platforms[i].quality);
+        printf("    Контроль вывода: %s\n", platforms[i].control_level);
+        printf("    Размер данных: %.1f ТБ\n", platforms[i].training_data_size);
+        printf("    Требования: %.1f GPU-часов\n", platforms[i].compute_requirements);
+        printf("    Стоимость: %.1f $/мес\n", platforms[i].cost);
+        printf("    Этическая сертификация: %s\n",
+            platforms[i].ethical_certification ? "да" : "нет");
+    }
+
+    printf("\n=== Конец списка ===\n");
 }
 
-void search_platforms(generative_ai_t* platforms, int size) {
-    (void)platforms;
-    (void)size;
+/*
+ * Добавляет новые платформы в массив и сохраняет в файл.
+ * platforms - массив записей
+ * size - счётчик записей
+ */
+void add_platform(generative_ai_t* platforms, int* size) {
+    int count = 0;
+    int i = 0;
+
+    printf("\nСколько платформ добавить? ");
+    scanf("%d", &count);
+    getchar();
+
+    for (i = 0; i < count; i++) {
+        generative_ai_t temp;
+
+        printf("\n--- Платформа %d из %d ---\n", i + 1, count);
+
+        printf("Название (например ChatGPT): ");
+        fgets(temp.name, sizeof(temp.name), stdin);
+        temp.name[strcspn(temp.name, "\n")] = '\0';
+
+        printf("Типы генерации (text / images / video / code, можно несколько через запятую): ");
+        fgets(temp.generation_types, sizeof(temp.generation_types), stdin);
+        temp.generation_types[strcspn(temp.generation_types, "\n")] = '\0';
+
+        printf("Качество (0.0 - 10.0): ");
+        scanf("%f", &temp.quality);
+        getchar();
+
+        printf("Контроль вывода (low / medium / high): ");
+        fgets(temp.control_level, sizeof(temp.control_level), stdin);
+        temp.control_level[strcspn(temp.control_level, "\n")] = '\0';
+
+        printf("Размер данных в ТБ (например 100.0): ");
+        scanf("%f", &temp.training_data_size);
+        getchar();
+
+        printf("Требования в GPU-часах (например 1200.0): ");
+        scanf("%f", &temp.compute_requirements);
+        getchar();
+
+        printf("Стоимость в $/мес (например 20.0, 0 - бесплатно): ");
+        scanf("%f", &temp.cost);
+        getchar();
+
+        printf("Этическая сертификация (1 - да, 0 - нет): ");
+        scanf("%d", &temp.ethical_certification);
+        getchar();
+
+        platforms[*size] = temp;
+        (*size)++;
+
+        printf("Платформа добавлена.\n");
+    }
+
+    save_platforms_to_file(platforms, *size);
+    printf("\nВсе изменения сохранены.\n");
 }
 
-void sort_platforms(generative_ai_t* platforms, int size) {
-    (void)platforms;
-    (void)size;
-}
 
-void edit_platform(generative_ai_t* platforms, int size) {
-    (void)platforms;
-    (void)size;
-}
-
-void delete_platform(generative_ai_t* platforms, int* size) {
-    (void)platforms;
-    (void)size;
-}
+void search_platforms(generative_ai_t* platforms, int size) { (void)platforms; (void)size; }
+void sort_platforms(generative_ai_t* platforms, int size) { (void)platforms; (void)size; }
+void edit_platform(generative_ai_t* platforms, int size) { (void)platforms; (void)size; }
+void delete_platform(generative_ai_t* platforms, int* size) { (void)platforms; (void)size; }
