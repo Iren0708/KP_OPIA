@@ -1,0 +1,14 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build
+x64/
+Debug/
+Release/
+*.exe
+*.obj
+*.pdb
+*.ilk
+desktop.ini
