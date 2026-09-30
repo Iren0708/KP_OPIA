@@ -1,99 +1,71 @@
 Name: ChatGPT
-Generation types: text, code
+Generation types: текст, код
 Quality: 9.2
-Control level: high
-Training data size: 570.0
-Compute requirements: 3640.0
-Cost: 20.0
+Control level: высокий
+Training data size: 570
+Compute requirements: 3640
+Cost: 20
 Ethical certification: 1
 
 Name: Midjourney
-Generation types: images
+Generation types: изображения
 Quality: 8.8
-Control level: medium
-Training data size: 100.0
-Compute requirements: 1200.0
-Cost: 30.0
+Control level: средний
+Training data size: 100
+Compute requirements: 1200
+Cost: 30
 Ethical certification: 0
 
 Name: Stable Diffusion
-Generation types: images
+Generation types: изображения
 Quality: 8.0
-Control level: high
-Training data size: 50.0
-Compute requirements: 800.0
-Cost: 0.0
+Control level: высокий
+Training data size: 50
+Compute requirements: 800
+Cost: 0
 Ethical certification: 1
 
 Name: DALL-E 3
-Generation types: images
+Generation types: изображения
 Quality: 9.0
-Control level: high
-Training data size: 200.0
-Compute requirements: 2500.0
-Cost: 20.0
+Control level: высокий
+Training data size: 200
+Compute requirements: 2500
+Cost: 20
 Ethical certification: 1
 
 Name: Gemini
-Generation types: text, images, code
+Generation types: текст, изображения, код
 Quality: 8.5
-Control level: medium
-Training data size: 400.0
-Compute requirements: 3000.0
-Cost: 20.0
+Control level: средний
+Training data size: 400
+Compute requirements: 3000
+Cost: 20
 Ethical certification: 1
 
 Name: Llama 3
-Generation types: text, code
+Generation types: текст, код
 Quality: 8.7
-Control level: high
-Training data size: 15.0
-Compute requirements: 600.0
-Cost: 0.0
+Control level: высокий
+Training data size: 15
+Compute requirements: 600
+Cost: 0
 Ethical certification: 1
 
 Name: Sora
-Generation types: video
+Generation types: видео
 Quality: 9.5
-Control level: low
-Training data size: 300.0
-Compute requirements: 5000.0
-Cost: 50.0
+Control level: низкий
+Training data size: 300
+Compute requirements: 5000
+Cost: 50
 Ethical certification: 0
 
 Name: Claude 3
-Generation types: text, code
+Generation types: текст, код
 Quality: 9.3
-Control level: high
-Training data size: 250.0
-Compute requirements: 2800.0
-Cost: 20.0
+Control level: высокий
+Training data size: 250
+Compute requirements: 2800
+Cost: 20
 Ethical certification: 1
-
-Name: ИИ агент
-Generation types: фото
-Quality: 8.0
-Control level: 123
-Training data size: 34.0
-Compute requirements: 123.0
-Cost: 100.0
-Ethical certification: 0
-
-Name: 123
-Generation types: 23
-Quality: 45.0
-Control level: 23
-Training data size: 412.0
-Compute requirements: 341234.0
-Cost: 123.0
-Ethical certification: 1
-
-Name: иишка
-Generation types: text
-Quality: 5.0
-Control level: high
-Training data size: 100.0
-Compute requirements: 1000.0
-Cost: 0.0
-Ethical certification: 0
-
